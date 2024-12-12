@@ -20,10 +20,12 @@ contenu de mon fichier is_it_friday_yet.feature :
 
 Feature: Is it Friday yet?
   Everybody wants to know when it's Friday
+
   Scenario Outline: Check if today is Friday
     Given today is "<day>"
     When I ask whether it's Friday yet
     Then I should be told "<answer>"
+
   Examples:
     | day            | answer |
     | Friday         | TGIF   |
@@ -41,30 +43,39 @@ image::artifacts-r303.svg[width=80%]
 contenu de mon fichier Order.java : 
 
 package dojo;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class Order {
     private String owner;
     private String target;
     private List<String> cocktails;
+
     public Order() {
         this.cocktails = new ArrayList<>();
     }
+
     public List<String> getCocktails() {
         return cocktails;
     }
+
     public void addCocktail(String cocktail) {
         cocktails.add(cocktail);
     }
+
     public void declareOwner(String owner) {
         this.owner = owner;
     }
+
     public void declareTarget(String target) {
         this.target = target;
     }
+
     public String getOwner() {
         return owner;
     }
+
     public String getTarget() {
         return target;
     }
