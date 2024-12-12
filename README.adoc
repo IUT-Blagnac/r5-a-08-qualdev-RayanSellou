@@ -39,3 +39,47 @@ image::https://github.com/IUT-Blagnac/r5-a-08-qualdev-RayanSellou/blob/main/capt
 image::artifacts-r303.svg[width=80%]
 
 == TP2...
+
+contenu de mon fichier Order.java : 
+
+package dojo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Order {
+    private String owner;
+    private String target;
+    private List<String> cocktails;
+
+    public Order() {
+        this.cocktails = new ArrayList<>();
+    }
+
+    public List<String> getCocktails() {
+        return cocktails;
+    }
+
+    public void addCocktail(String cocktail) {
+        cocktails.add(cocktail);
+    }
+
+    public void declareOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public void declareTarget(String target) {
+        this.target = target;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+}
+
+image::https://github.com/IUT-Blagnac/r5-a-08-qualdev-RayanSellou/blob/main/captures/Screen_tp2.png[]
+
