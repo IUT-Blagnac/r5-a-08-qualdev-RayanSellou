@@ -32,6 +32,9 @@ Feature: Is it Friday yet?
     | Sunday         | Nope   |
     | anything else! | Nope   |
 
+image::https://github.com/IUT-Blagnac/r5-a-08-qualdev-RayanSellou/blob/main/captures/screen_tp_cucumber.png[]
+
+
 .Exemple d'image insérée en asciidoc
 image::artifacts-r303.svg[width=80%]
 
