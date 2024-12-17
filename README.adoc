@@ -106,4 +106,46 @@ Feature: Kruskal's algorithm
       | 0    | 1  | 10     |
     And the total weight should be 19
 
+contenu du fichier kruskal_steps (pour la partie giver, when, then) : 
+
+from behave import given, when, then
+from kruskal import UnionFind, kruskal  
+
+@given('I have a graph with the following edges')
+def step_impl_given_graph(context):
+    context.edges = []
+    for row in context.table:
+        from_node = int(row['from'])
+        to_node = int(row['to'])
+        weight = int(row['weight'])
+        context.edges.append((from_node, to_node, weight))
+    context.n = max([max(from_node, to_node) for from_node, to_node, _ in context.edges]) + 1
+
+@when('I run Kruskal\'s algorithm')
+def step_impl_run_kruskal(context):
+    context.mst, context.total_weight = kruskal(context.n, context.edges)
+
+@then('the minimum spanning tree should be')
+def step_impl_check_mst(context):
+    expected_mst = []
+    for row in context.table:
+        from_node = int(row['from'])
+        to_node = int(row['to'])
+        weight = int(row['weight'])
+        expected_mst.append((from_node, to_node, weight))
+
+    assert sorted(context.mst) == sorted(expected_mst)
+
+@then('the total weight should be {total_weight}')
+def step_impl_check_total_weight(context, total_weight):
+    assert context.total_weight == int(total_weight)
+
+
+L'objectif du test sur l'algorithme de Kruskal est de vérifier que l'algorithme génère correctement un arbre couvrant de poids minimum (MST) pour un graphe donné.
+
+Donc ça inclut de vérifier que l'algorithme trie et sélectionne les arêtes avec les poids les plus bas, de s'assurer qu'il ne crée pas de cycles en utilisant une structure union-find, et enfin de confirmer que le poids total de l'arbre couvrant est minimal.
+
+En gros, l'objectif est de garantir que l'algorithme produit un arbre couvrant valide avec un poids total optimal.
+
+image::https://github.com/IUT-Blagnac/r5-a-08-qualdev-RayanSellou/blob/main/captures/screen_tp3_qualite.png[]
 
